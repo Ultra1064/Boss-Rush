@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Victor
 {
     public class RangedAttackState : State
@@ -11,13 +9,20 @@ namespace Victor
 
         public override void OnEnter()
         {
+            base.OnEnter();
             //Activate particle effects for charg
             //Shoot
         }
 
-        //No OnUpdate needed
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+        }
 
-        //No OnExit needed (I don't think)
+        public override void OnExit()
+        {
+            base.OnExit();
+        }
     }
 }
 

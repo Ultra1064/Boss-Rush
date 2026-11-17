@@ -1,32 +1,27 @@
-using UnityEngine;
-
 namespace Victor
 {
-    public class StateMachine : MonoBehaviour
+    public class StateMachine
     {
         State currentState;
-        GameObject enemy; //Change to boss script
+        public VictorBoss boss; //Change to boss script
 
-        public StateMachine(GameObject enemy) //A Constructor in my Unity Project?!
+        public StateMachine(VictorBoss enemy) //A Constructor in my Unity Project?!
         {
-            this.enemy = enemy;
+            boss = enemy;
         }
 
-        private void Update()
+        public void OnUpdate()
         {
             currentState.OnUpdate();
         }
 
         public void ChangeState(State newState)
         {
-            if (currentState != null)
-            {
-                currentState.OnExit();
-            }
+            currentState?.OnExit();
 
             currentState = newState;
 
-            currentState.OnEnter();
+            currentState?.OnEnter();
         }
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 namespace Victor
 {
-    public class State
+    public abstract class State
     {
         protected StateMachine machine;
         public float elapsedTime;
@@ -16,12 +16,12 @@ namespace Victor
 
         }
 
-        public virtual void OnExit()
+        public virtual void OnUpdate()
         {
-
+            elapsedTime += Time.deltaTime;
         }
 
-        public virtual void OnUpdate()
+        public virtual void OnExit()
         {
 
         }
