@@ -138,9 +138,9 @@ namespace Victor
             return (navigator.CalculatePathToPosition(player.position));
         }
 
-        float DistanceToPlayer()
+        float DistanceToTarget(Transform target)
         {
-            return Vector3.Distance(form.position, player.position);
+            return Vector3.Distance(form.position, target.position);
         }
 
         public void SetInMeleeRange(bool inMeleeRange)
@@ -148,11 +148,11 @@ namespace Victor
             this.inMeleeRange = inMeleeRange;
         }
 
-        public void FacePlayer()
+        public void FaceTarget(GameObject target)
         {
-            var dirToPlayer = (player.transform.position - transform.position).normalized;
-            dirToPlayer.y = 0;
-            transform.forward = dirToPlayer;
+            var dirToTarget = (target.transform.position - transform.position).normalized;
+            dirToTarget.y = 0;
+            transform.forward = dirToTarget;
             targetVelocity = Vector3.zero;
         }
     }
