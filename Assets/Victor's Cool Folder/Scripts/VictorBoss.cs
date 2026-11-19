@@ -15,11 +15,10 @@ namespace Victor
 
         StateMachine machine;
 
-        float currentStateElapsed = 0;
         Vector3 currentTargetNodePosition;
-        int pathNodeIndex = 0;
+        public int pathNodeIndex = 0;
         Vector3 targetVelocity;
-        bool inMeleeRange = false;
+        public bool inMeleeRange = false;
 
         private void Awake()
         {
@@ -62,7 +61,7 @@ namespace Victor
             return false;
         }
 
-        void UpdatePursue()
+        public void UpdatePursue()
         {
             //Debug.Log("in pursue");
 
@@ -94,25 +93,16 @@ namespace Victor
 
             }
 
-            if (inMeleeRange)
-            {
-                // do melee attack
-                //EnterMelee();
-                return;
-            }
-
             targetVelocity = form.forward * speed;
             targetVelocity.y = rb.linearVelocity.y;
-
-            if (currentStateElapsed > 1) // rebuild path every half second
-            {
-                pathNodeIndex = 1;
-                AttemptMakePathToPlayer();
-            }
         }
 
         public void MeleeAttack()
         {
+            var dirToPlayer = (player.transform.position - transform.position).normalized;
+            dirToPlayer.y = 0;
+            transform.forward = dirToPlayer;
+            targetVelocity = Vector3.zero;
             StartCoroutine(HandleMelee());
         }
 
@@ -133,7 +123,7 @@ namespace Victor
             //state = EnemyStates.dead;
         }
 
-        bool AttemptMakePathToPlayer()
+        public bool AttemptMakePathToPlayer()
         {
             return (navigator.CalculatePathToPosition(player.position));
         }

@@ -167,8 +167,8 @@ MonoBehaviour:
   OnEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6222785879615802613}
-        m_TargetAssemblyTypeName: EnemyTest, Assembly-CSharp
+      - m_Target: {fileID: 875962901}
+        m_TargetAssemblyTypeName: Victor.VictorBoss, Assembly-CSharp
         m_MethodName: SetInMeleeRange
         m_Mode: 6
         m_Arguments:
@@ -182,8 +182,8 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6222785879615802613}
-        m_TargetAssemblyTypeName: EnemyTest, Assembly-CSharp
+      - m_Target: {fileID: 875962901}
+        m_TargetAssemblyTypeName: Victor.VictorBoss, Assembly-CSharp
         m_MethodName: SetInMeleeRange
         m_Mode: 6
         m_Arguments:
@@ -1492,6 +1492,9 @@ GameObject:
   - component: {fileID: 875962895}
   - component: {fileID: 875962897}
   - component: {fileID: 875962898}
+  - component: {fileID: 875962900}
+  - component: {fileID: 875962899}
+  - component: {fileID: 875962901}
   m_Layer: 7
   m_Name: VictorBoss
   m_TagString: Untagged
@@ -1635,6 +1638,56 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &875962899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875962893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fb0a386a881024f92fb6723560fe70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &875962900
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875962893}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &875962901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875962893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a73c55cd9a8e3c4589b3d8e0205d603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  meleeWeapon: {fileID: 801178275}
+  pathNodeIndex: 0
+  inMeleeRange: 0
 --- !u!1 &926889782
 GameObject:
   m_ObjectHideFlags: 0
@@ -8393,17 +8446,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4a147e124dd8f4ab5d82f7492c3cc3, type: 3}
---- !u!114 &6222785879615802613 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2360457001563679199, guid: 1e4a147e124dd8f4ab5d82f7492c3cc3, type: 3}
-  m_PrefabInstance: {fileID: 6222785879615802612}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1daad54e5177c964291ab03eeb9e6ac7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7618333120010288130
 PrefabInstance:
   m_ObjectHideFlags: 0
