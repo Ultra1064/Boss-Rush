@@ -2,15 +2,15 @@ using UnityEngine;
 
 namespace Victor
 {
-    public class PlayerHomingProjectile : MonoBehaviour
+    public class PlayerHomingProjectile : Projectile
     {
-        [SerializeField] float speed = 30;
-        Rigidbody rigidBody;
+        [SerializeField] float sspeed = 30;
+        Rigidbody rrigidBody;
         GameObject target;
 
         void Start()
         {
-            rigidBody = GetComponent<Rigidbody>();
+            rrigidBody = GetComponent<Rigidbody>();
             target = FindAnyObjectByType<VictorBoss>().gameObject;
         }
 
@@ -21,13 +21,8 @@ namespace Victor
 
             Vector3 direction = (target.transform.position - transform.position).normalized; //Target Vector minus this Vector equals the distance between the two. (Vectors also point, which matters here)
 
-            rigidBody.linearVelocity = direction * speed;
+            rrigidBody.linearVelocity = direction * sspeed;
             transform.forward = direction;
-        }
-
-        public void DestroyProjectile()
-        {
-            Destroy(gameObject);
         }
     }
 }

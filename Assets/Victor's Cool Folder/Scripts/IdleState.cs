@@ -15,6 +15,7 @@ namespace Victor
         public override void OnUpdate()
         {
             base.OnUpdate();
+            
             if (elapsedTime > 2.0f && machine.boss.AttemptBeginPursue())
             {
                 machine.ChangeState(new PursuitState(machine));

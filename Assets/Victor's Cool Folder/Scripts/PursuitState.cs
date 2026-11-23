@@ -35,6 +35,7 @@ namespace Victor
         public override void OnExit()
         {
             base.OnExit();
+            machine.boss.Stop();
         }
     }
 }

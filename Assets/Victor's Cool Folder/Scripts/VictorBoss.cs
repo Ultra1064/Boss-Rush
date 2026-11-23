@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 namespace Victor
 {
@@ -17,8 +18,12 @@ namespace Victor
 
         Vector3 currentTargetNodePosition;
         public int pathNodeIndex = 0;
-        Vector3 targetVelocity;
+        public Vector3 targetVelocity;
         public bool inMeleeRange = false;
+
+        public GameObject playerShot;
+
+        public ParticleSystem stunEffects;
 
         private void Awake()
         {
@@ -43,6 +48,34 @@ namespace Victor
         private void FixedUpdate()
         {
             rb.linearVelocity = targetVelocity;
+        }
+
+        public void Stop()
+        {
+            targetVelocity = Vector3.zero;
+        }
+
+        public void Stun()
+        {
+            machine.ChangeState(new StunnedState(machine));
+            stunEffects?.Play();
+        }
+
+        public bool? CheckForProjectile()
+        {
+            if (machine.GetState() is ReadyReflectState)
+            {
+                return null;
+            }
+            var projectile = FindAnyObjectByType<Projectile>();
+            if (projectile != null)
+                playerShot = projectile.gameObject;
+            if (playerShot != null)
+            {
+                machine.ChangeState(new ReadyReflectState(machine, 3));
+                return true;
+            }
+            return false;
         }
 
         public bool AttemptBeginPursue()

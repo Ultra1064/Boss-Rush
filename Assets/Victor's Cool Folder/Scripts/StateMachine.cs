@@ -23,6 +23,11 @@ namespace Victor
 
             currentState?.OnEnter();
         }
+
+        public State GetState()
+        {
+            return currentState;
+        }
     }
 }
 
